@@ -1,0 +1,206 @@
+coursera HTML/CSS/Java course
+
+intallation:
+node.js
+npm
+browser-sync (google for it)
+git (auto)
+chrome 
+make github account and repo and set git pages 
+    first make a index.html file with some sample code
+    save, add, commit, push
+    then set the 'pages' 'deploy from branch' and in branch select main.
+    then save and the page should be available, you can find it under 'actions'
+    if you now make a sub directory (folder) eg 'site' in your main branch and you upload a index.html file to that this will also be a html page which you can find under the original 'page name'\site
+
+    
+    
+use browser-sync
+after installation check version by 'name of progam' --version this holds for all the programs just installed
+
+for browser-sync to use and sync with a file on your pc type
+navigate in console to the folder with the html page
+then type:
+browser-sync start --server --directory --folder "*"
+ this will open up a browser (chrome) and show the content of the folder on an html page, you can click the index.html file to show your page it will automatically update if you update the file and save it, no need to refresh (apparently)
+ 
+ 
+ 
+Check HTML valitidy
+validator.w3.org
+
+
+
+ 
+ HTML
+ startline:    <!doctype html>
+ start tag <p>    -- end tag </p> (this holds for most tags but not all) no spaces between < and what follows!
+ closing tags cannot be intertwined - you need to close them in order (like brackets in matlab/python)
+ <p> - paragraph
+ <a>
+ <div>
+<span> 
+<ol> sorted list (numbered)  always followed by <li> item </li>
+<ul> unsorted list (bullits) always followed by <li> item </li>
+
+
+Elements (there are 7)
+block level can have blocks/inline pieces inside, always on its own line
+in-line  only inline pieces inside
+ more: www.w3.org/TR/html5/dom.html/#kinds-of-content
+ 
+ 
+ Semantics
+ useful for the human to read and understand what the structure is computer does not really need it but it is good practice, the tags that belong to this are sometimes unnecessary for html the sections for example. but the headings <h1> etc up until <h6> can also be later configured to show up in a similar way using CSS and <h1> contains the main content of the page this helps in search engines to grasp the main content.
+ 
+ Lists
+ all items in a list must be surrouded by <li>  </li> if not it will give an error no loose text can be here!
+ <ul>
+ <li> item 1 </li>
+ <li> item 2 </li>
+ <ul>
+ <li> subitem 1 </li>
+ <li> subitem 2 </li>
+ <li> subitem 3 </li>
+ </ul>
+ <li> item 3 </li>
+ </ul>
+ 
+ 
+ 
+HTML general structure
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">   (not req and no closing tag)
+    <title> header of the file on the tab </title> (required and has closing tag)
+</head>
+
+<body>
+
+</body>
+</html>
+
+
+Entity references 
+html character 'escapes'  - help avoid rendering issues
+some chars are used a lot in html but if you want to use them inside the text you need to escape them:
+<    -->    &lt;
+>    -->    &gt;
+&    -->    &amp;
+"    -->    &quot;    (can be used as a quote, sometimes they come out wrong)
+copyright reference  -->   &copy;
+keep items together always on the same line   -> &nbsp;       I&nbsp;love&nbsp;you  
+
+
+Links
+<a href="name to html file you want to link to, can be absolute or relative"  title="name of the link" (optional but recomended)> then a name which can be clicked </a>
+
+you can also us a <div> inside the <a> tag, to put the link on a different line
+
+external link -> href="www.blabla.com"   the rest is the same.  a target="_blank"  can be added in this tag as well, to open the link page in a new tab!
+
+fragment identifier
+link inside the document
+href="#section1"
+<section id="section1">   
+
+of
+
+<a name="section6">(#section6) Section 6</a>
+
+
+Displaying images
+src can also be external url or internal ref
+img tag is an inline element, it is inline with the text
+the image size is good to give then during loading it reserves the spaces
+put a <p>  </p> around the image to make it separate eg not inline with the text (?)
+
+<img scr="your picture.jpg" width="400" height="800" alt="picture with a quote" (alt not needed but good practice)>
+
+html comment
+<!--   things to comment out   -->
+
+
+
+
+
+CSS
+cascading stile sheet
+
+p (selector, in this case paragraph) {  color (property): blue; (value)   (the declaration is the thing in the brackets)
+font-size:20px;
+width:200px;
+}
+
+
+stylesheet contains all the css rules, you can also put it into the html file
+<style>
+p{}
+h1{}
+</style>
+
+
+selectors in CSS
+
+Element
+eg 'p'
+p { }
+
+Class
+.blue { color:blue;}  
+<p class='blue'> ...</p>
+now the paragraph will be blue
+
+
+ID selectors
+#name {
+color: blue;
+}
+<div id="name"> ...</div> then this section will be blue
+
+
+div, .blue { color: blue;} can be used to make all divs blue and use it in the tag
+
+
+element with class selector
+paragraphs with class=big will be blue
+<p class="big"> ...</p>
+p.big { color: blue; font-size: 20px;}
+
+
+child selector
+article > p { color: blue;}
+
+if p is a direct child of an article selector then it is blue
+<article> ..
+<p>...</p> (will be blue)
+</article>
+
+<article> ..
+<div> <p>...</p> </div> (will NOT be blue)
+</article>
+
+
+descendant selector
+article p { color:blue;}
+now every p in the article element will be blue
+
+
+No limit to element selectors
+.colored p { color:blue;} ( any p inside an element with class ="colored" will be blue)
+article > .colored { color: blue;} (every element with class="colored" that is a direct child of article element will be blue)
+
+
+pseudo class selectors
+
+selector:psuedo-class selectors
+lecture 15 -  very powerful but needs training
+:link
+:visited
+:hover
+:active
+:nth-child(...)
+
+
